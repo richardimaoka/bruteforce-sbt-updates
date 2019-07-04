@@ -26,7 +26,7 @@ mkdir -p intermediate
 
 for SBT_PROJECT_DIRECTORY in $(./list-sbt-directories.sh "${DIR_NAME}")
 do
-  FILE_NAME="intermediate/$(echo "${SBT_PROJECT_DIRECTORY}" | sed -e 's/^[.][.][/]/_/g' | sed -e 's/[/]/-/g')"
+  FILE_NAME="intermediate/$(echo "${SBT_PROJECT_DIRECTORY}" | sed -e 's/^[.][.][/]/_/g' | sed -e 's/[/]/-/g').log"
   echo "Checking Scala library dependencies in ${SBT_PROJECT_DIRECTORY}" | tee "${FILE_NAME}" 
   ./sbt-updates.sh "${SBT_PROJECT_DIRECTORY}" >> "${FILE_NAME}"
 
@@ -35,7 +35,6 @@ do
   #
   # ./sbt-updates.sh "${SBT_PROJECT_DIRECTORY}" >> "${FILE_NAME}" &  
 done
-
 
 ######################################
 # 3. Wait until the children complete
@@ -53,4 +52,13 @@ do
 done < "${TEMP_FILE}"
 
 rm "${TEMP_FILE}"
-echo "Finished!!"
+
+######################################
+# 4. Produce the final output
+######################################
+./aggregate-intermediate-results.sh > output.log
+
+echo "------------------------------------"
+echo " Finished !! "
+echo "------------------------------------"
+echo "The result is available in $(pwd)/output.log"
