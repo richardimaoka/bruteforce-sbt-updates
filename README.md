@@ -5,7 +5,6 @@ It produces an output like this:
 
 ```
 Checking Scala library dependencies in ../somedir/childdir/project1
-[info] Set current project to project1 (in build file:/Users/richard.imaoka/somedir/childdir/project1/)
 [info] Found 6 dependency updates for project1
 [info]   commons-codec:commons-codec      : 1.0              -> 1.12           
 [info]   org.scala-lang:scala-library     : 1.0.0            -> 2.13.0         
@@ -16,10 +15,7 @@ Checking Scala library dependencies in ../somedir/childdir/project1
 [success] Total time: 2 s, completed 2018/01/04 13:35:58
 
 Checking Scala library dependencies in ../somedir/childdir/project2
-[warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
-[info] Set current project to project1 (in build file:/Users/richard.imaoka/somedir/childdir/project2/)
-[info] Found 6 dependency updates for project1
-[info] Found 6 dependency updates for cirqua-commons-sbt1
+[info] Found 6 dependency updates for project2
 [info]   commons-codec:commons-codec      : 1.00            -> 1.12           
 [info]   org.scala-lang:scala-library     : 1.0.0 -> 1.12.8 -> 2.13.0         
 [info]   org.scalacheck:scalacheck:test   : 1.0.0 -> 1.13.5 -> 1.14.0         
