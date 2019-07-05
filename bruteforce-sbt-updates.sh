@@ -22,6 +22,7 @@ fi
 ######################################
 # 2. Main processing
 ######################################
+rm -r intermediate
 mkdir -p intermediate
 
 for SBT_PROJECT_DIRECTORY in $(./list-sbt-directories.sh "${DIR_NAME}")

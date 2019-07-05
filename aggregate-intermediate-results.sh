@@ -2,12 +2,14 @@
 
 for FILE in intermediate/*.log
 do
-  grep -v "[[]info[]] Loading" < "${FILE}" | \
-    grep -v "[[]info[]] Resolving " | 
-    grep -v "[[]info[]] Updating ProjectRef(" | \
-    grep -v "[[]info[]] Done updating" | \
-    grep -v "[[]info[]] Done compiling"
-  
+  # Is grep -e "->" reliable???
+  grep -e "Checking Scala library dependencies in" \
+       -e "[[]success[]] Total time:" \
+       -e "->" \
+       -e "dependency updates for" \
+       -e "Project loading failed" < "${FILE}" |
+    grep -v "[[]warn[]]" 
+
   # separate each project with an empty line
   echo ""
 done
